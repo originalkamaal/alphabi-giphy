@@ -85,7 +85,7 @@ const Login = () => {
                 )}
               </div>
 
-              <div className="text-center pt-1 mb-6 pb-1">
+              <div className="text-center pt-1">
                 <button
                   className="inline-block px-6 py-2.5 text-black border-green-600 border font-medium text-xs leading-tight uppercase rounded shadow-md bg-green-100 hover:bg-green-700 hover:text-white hover:shadow-lg  transition duration-150 ease-in-out w-full mb-3 shadow-green-50"
                   type="submit"
@@ -93,6 +93,7 @@ const Login = () => {
                   Login
                 </button>
               </div>
+              <div className='text-center mb-3'><Link to="/reset-password">Forgot Password?</Link></div>
               <div className="flex items-center justify-between pb-6 gap-5">
                 <p className="mb-0 mr-2 whitespace-nowrap">Don't have an account?</p>
                 <Link

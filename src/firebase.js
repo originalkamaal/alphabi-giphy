@@ -65,7 +65,7 @@ const registerWithEmailAndPassword = async (email, password) => {
 };
 
 //to send password reset link to the user
-const sendPasswordReset = async (email) => {
+const resetPassword = async (email) => {
     try {
         await sendPasswordResetEmail(auth, email);
         alert("Password reset link sent!");
@@ -85,6 +85,6 @@ export {
     signInWithGoogle,
     logInWithEmailAndPassword,
     registerWithEmailAndPassword,
-    sendPasswordReset,
+    resetPassword,
     logout,
 };
