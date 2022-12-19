@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../components/LoadingSpinner';
+import { auth } from '../firebase';
 import MainLayout from '../layouts/MainLayout';
 
 const Home = () => {
+
+
+
   return (
     <MainLayout>
       <div>
@@ -13,7 +20,9 @@ const Home = () => {
         {/* Pagination Section */}
         <div></div>
       </div>
-    </MainLayout>
+    </MainLayout >
+
+
   );
 };
 
