@@ -14,6 +14,8 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    
+    document.title = 'Create Account | GiphyLake'
     if (user) {
       navigate('/');
     }

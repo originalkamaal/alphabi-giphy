@@ -15,6 +15,8 @@ const Login = () => {
 
     //Navigate User if already logged in
     useEffect(() => {
+
+        document.title = "Reset Password | GiphyLake"
         if (user) {
             navigate('/');
         }

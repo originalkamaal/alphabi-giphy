@@ -21,6 +21,7 @@ const Favourite = () => {
 
   //for initial fetch
   useEffect(() => {
+    document.title = 'My Favourite GIFs | GiphyLake'
     handleGetAllFavGifs();
   }, [])
 

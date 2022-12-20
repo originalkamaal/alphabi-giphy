@@ -43,6 +43,7 @@ const Home = () => {
 
   //Use effect will call Data Fetcher function on every search input change for hot search, and on every pagination navigation.
   useEffect(() => {
+    document.title = 'Home | GiphyLake'
     getAllMyFavGifs(setMyFavGifs);
     giphyQuery();
   }, [giphies.q, giphies.offset])
