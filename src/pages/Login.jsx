@@ -15,6 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = 'Login | GiphyLake'
     //redirect the user if already logged in, user state is dependency
     if (user) {
       navigate('/');
