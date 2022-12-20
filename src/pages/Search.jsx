@@ -112,7 +112,7 @@ const Home = () => {
                     {giphies.data.map((giphy, key) => (
                       <div key={key} className="w-full shadow-lg rounded-md border flex flex-col">
                         <img src={giphy.images.fixed_width_downsampled.url} className='rounded-t-md w-full h-56' />
-                        <div className='w-full flex justify-between px-3 pt-5'>
+                        <div className='w-full flex justify-between px-3 py-3'>
                           <div className='font-bold text-lg'>{giphy.title}</div>
 
                           {
