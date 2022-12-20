@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, registerWithEmailAndPassword, resetPassword } from '../firebase';
+import { auth, resetPassword } from '../firebase';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 
@@ -12,19 +12,24 @@ const Login = () => {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
 
+
+    //Navigate User if already logged in
     useEffect(() => {
         if (user) {
             navigate('/');
         }
     }, [user])
 
+    //Yup schema for email input validation.
     const formSchema = Yup.object().shape({
         email: Yup.string()
             .email('Please check email')
             .required('Please enter correct email'),
     });
+
     const formOptions = { resolver: yupResolver(formSchema) };
 
+    //passing schema to react-hook=form useForm and initializing
     const {
         register,
         handleSubmit,
@@ -32,9 +37,8 @@ const Login = () => {
     } = useForm(formOptions);
 
 
+    //Reset password form submit action
     const onSubmit = async ({ email, password }) => {
-
-
         const res = await resetPassword(email, password);
         if (res) {
             navigate('/login')

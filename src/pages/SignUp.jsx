@@ -20,6 +20,9 @@ const Login = () => {
   }, [user])
 
   const formSchema = Yup.object().shape({
+
+    name: Yup.string()
+      .required('Name is required'),
     email: Yup.string()
       .email('Please check email')
       .required('Please enter correct email'),
@@ -38,10 +41,10 @@ const Login = () => {
     formState: { errors },
   } = useForm(formOptions);
 
-  const onSubmit = async ({  email, password }) => {
+  const onSubmit = async ({ name, email, password }) => {
 
 
-    const res = await registerWithEmailAndPassword( email, password);
+    const res = await registerWithEmailAndPassword(name, email, password);
     if (res) {
       navigate('/login')
     }
@@ -59,6 +62,19 @@ const Login = () => {
           </div>
           <form className="text-xs md:w-1/2 w-full px-4" onSubmit={handleSubmit(onSubmit)}>
             <p className="mb-4">Fill this form to create your account</p>
+
+            <div className="mb-4">
+              <input
+                {...register('name')}
+                type="text"
+                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
+                placeholder="Name"
+              />
+
+              {errors.name && (
+                <p className="text-xs text-red-700 pt-1">Name is required</p>
+              )}
+            </div>
             <div className="mb-4">
               <input
                 {...register('email')}

@@ -1,45 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BiMenu } from 'react-icons/bi';
 import { AiFillCloseCircle } from 'react-icons/ai';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, logout } from '../firebase';
-const Header = () => {
+import { Link } from 'react-router-dom';
+import { logout } from '../firebase';
+const Header = ({ user }) => {
   const [menu, toggleMenu] = useState(false);
-  const [user, loading, error] = useAuthState(auth);
-  const navigate = useNavigate();
-
-
-  useEffect(() => {
-    // if user is not logged in navigating to login page
-    if (!user) {
-      navigate("/login");
-    }
-    console.log(user);
-  }, [user]);
-
 
   //Function to toggle Sidebar menu in small screens
   const handleMenu = () => {
     toggleMenu(!menu);
   };
 
-  //logout method exported from firebase config file
-
-
   return (
     <>
-      <div className="flex w-full bg-gray-100 h-20 items-center justify-between px-4">
+      <div className="flex w-full bg-black text-white h-14 items-center justify-between px-5">
         <div className="flex md:hidden" onClick={handleMenu}>
           <BiMenu size={25} />
         </div>
-        <div className="hidden md:flex font-bold text-2xl">GIPHYLAKE</div>
+        <div className="hidden md:flex font-extrabold text-2xl"><Link to='/'>GIPHYLAKE</Link></div>
         <div className="flex gap-5">
           {user &&
             <div>
-              Hi, {user.displayName ?? user.email}
+              Hi, {user.email.split('@')[0]}
             </div>
           }
+          <div>
+
+            <Link to='/'>Home</Link>
+          </div>
+          <div>
+
+            <Link to='/myfavourites'>My Favourites</Link>
+          </div>
           <div>
             <button onClick={logout}>Logout</button>
           </div>
@@ -60,6 +52,9 @@ const Header = () => {
               Hi, {user.displayName ?? user.email}
             </div>
           }
+          <div className="border-b border-gray-300 w-full text-center py-2">
+            <Link to='/myfavourites'>My Favourites</Link>
+          </div>
           <div className="border-b border-gray-300 w-full text-center py-2">
             <button onClick={logout}>Logout</button>
           </div>
