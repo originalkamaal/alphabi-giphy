@@ -137,6 +137,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
 
         return true
     } catch (err) {
+        alert(err)
         return false
     }
 };
