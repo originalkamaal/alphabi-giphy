@@ -18,7 +18,7 @@ const Header = ({ user }) => {
           <BiMenu size={25} />
         </div>
         <div className="hidden md:flex font-extrabold text-2xl text-white"><Link to='/'>GIPHYLAKE</Link></div>
-        <div className="flex gap-5 md:hidden">
+        <div className="md:flex gap-5 hidden">
           {user &&
             <div>
               Hi, {user.email.split('@')[0]}
