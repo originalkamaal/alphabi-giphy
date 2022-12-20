@@ -74,6 +74,7 @@ const Home = () => {
   //Handling hot search
   const handleSearch = async () => {
     setGiphies({ ...giphies, offset: 0, error: null, data: [], loading: giphies.q === '' || giphies.q.length < 3 ? false : true });
+    giphyQuery();
   }
 
 
